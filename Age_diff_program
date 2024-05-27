@@ -1,0 +1,16 @@
+#Anusha:
+person1_Name=input("Enter the name of the First_person : ")
+person1_Age=int(input("Enter the Age of the First_person"))
+person2_Name=input("Enter The Name Of The Second_Person:")
+person2_Age=int(input("Enter The Age Of Second_person"))
+
+if person1_Age>person2_Age:
+
+  Age_diff=person1_Age-person2_Age
+  print(person1_Name,"Is",Age_diff,"Olderthan",person2_Name)
+
+elif person2_Age>person1_Age:
+  Age_diff2=person2_Age-person1_Age
+  print(person2_Name,"IS",Age_diff2,"Olderthan",person1_Name)
+else:
+  print(person1_Name,"and",person2_Name, "Have same age ")
