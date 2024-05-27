@@ -1,0 +1,6 @@
+#Anusha
+Money_in_piggybank=10
+print("Money in the piggy bank",Money_in_piggybank)
+piggy_bank=int(input("Enter the Amount to be Added :"))
+Total_Amount=Money_in_piggybank+piggy_bank
+print("The Total Amount int the PIGGYBANK:",Total_Amount)
