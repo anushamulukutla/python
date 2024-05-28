@@ -1,0 +1,23 @@
+def convert_time_12hr_to_24hr(user_input):
+    hours, period = user_input.split()
+    hour, minute = hours.split(':')
+    hour = int(hour)  # Convert once and use throughout
+
+    if period.lower() == 'pm' and hour != 12:
+        hour += 12
+    elif period.lower() == 'am' and hour == 12:
+        hour = 0
+
+    # Ensuring the hour and minute are correctly formatted as two digits
+    formatted_hour = f"{hour:02}"
+    formatted_minute = f"{minute:02}"
+    print("The time in 24-hour format is:",formatted_hour+formatted_minute, "hours")
+
+# Main interaction
+while True:
+    user_input = input("Enter time in 12-hour format (e.g., 7:45 pm): ")
+    convert_time_12hr_to_24hr(user_input)
+
+    user_choice = input("Do you want to convert another time (yes/no)? ")
+    if user_choice.lower() != 'yes':
+        break
