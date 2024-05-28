@@ -1,0 +1,32 @@
+#Anusha
+itemid_1,itemid_2,itemid_3=1,2,3
+itemname_1,itemname_2,itemname_3="Apple","Dell","HP"
+itemprice_1,itemprice_2,itemprice_3=10,20,30
+print("*"*100)
+print("\t\t WELCOME To TINY LAPTOPSTORE \n Items listed:")
+print(itemid_1,itemname_1,":",itemprice_1)
+print(itemid_2,itemname_2,":",itemprice_2)
+print(itemid_3,itemname_3,":",itemprice_3)
+print("*"*100)
+Total_cart_value=0
+quantity=0
+print('Enter item number or enter -1 to total')
+while True:
+  cashier_choice=int(input())
+  if cashier_choice==itemid_1:
+    print("Selected item id:",itemid_1,"name is",itemname_1,"price is",itemprice_1)
+    Total_cart_value=Total_cart_value+itemprice_1
+    quantity+=1
+  elif cashier_choice==itemid_2:
+    print("Selected item id:",itemid_2,"name is",itemname_2,"price is",itemprice_2)
+    Total_cart_value=Total_cart_value+itemprice_2
+    quantity+=1
+  elif cashier_choice==itemid_3:
+    print("Selected item id:",itemid_3,"name is",itemname_3,"price is",itemprice_3)
+    Total_cart_value =Total_cart_value+itemprice_3
+    quantity+=1
+  elif cashier_choice== -1:
+    print("The total price of the ", quantity,"selected items:", Total_cart_value)
+    break
+  else:
+    print("Invalid Entry, Enter a valid item number:",end=" ")
