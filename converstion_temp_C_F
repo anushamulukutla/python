@@ -1,0 +1,27 @@
+def convert_celsius_to_fahrenheit(celsius):
+    
+    Fahrenheit = (9/5 * celsius) + 32
+    return Fahrenheit
+
+def convert_fahrenheit_to_celsius(Fahrenheit):
+    
+    celsius = (Fahrenheit - 32) * 5/9
+    return celsius
+
+# Main
+user_choice = input("Type C to convert from Celsius or F to convert from Fahrenheit: ").lower()
+if user_choice == "c":
+    user_input_val_C = int(input("Enter the value in Celsius: "))
+    conversion_val_F = convert_celsius_to_fahrenheit(user_input_val_C)
+    print(user_input_val_C, "C =", conversion_val_F, "F")
+elif user_choice == "f":
+    user_input_F = int(input("Enter the value in Fahrenheit: "))
+    conversion_val_C = convert_fahrenheit_to_celsius(user_input_F)
+    print(user_input_F, "F =", conversion_val_C, "C")
+else:
+    print("Enter a valid choice.")
+
+out_put:
+Type C to convert from Celsius or F to convert from Fahrenheit: c
+Enter the value in Celsius: 10
+10 C = 50.0 F
