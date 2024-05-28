@@ -1,0 +1,33 @@
+#Anusha
+def grades(mark):
+  if mark>=80:
+    return 'A'
+  elif mark>=70 and mark<80:
+    return 'B'
+  elif mark>=60 and mark<70:
+    return 'c'
+  elif mark<60:
+    return "F"
+#main
+student_names=[]
+student_marks=[]
+student_grades=[]
+
+for i in range(10):
+    name = input("Name of the Student: ").capitalize()
+    mark = int(input("Student Marks: "))
+    grade = grades(mark)
+    student_names.append(name)
+    student_marks.append(mark)
+    student_grades.append(grade)
+print("list of Student names:",student_names)
+print("List of Student Marks",student_marks)
+print("List of student Grades According to the Marks",student_grades)
+for i in range(10):
+    print(student_names[i] + ": Mark = " + str(student_marks[i]) + ", Grade = " + student_grades[i])
+search_name = input("Enter a student name to find their mark and grade: ")
+if search_name in student_names:
+    index = student_names.index(search_name)
+    print(search_name + ": Mark = " + str(student_marks[index]) + ", Grade = " + student_grades[index])
+else:
+    print("Student not found.")
