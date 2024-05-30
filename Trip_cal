@@ -1,0 +1,60 @@
+"""
+# **Task:**
+*Create three functions:*
+Function1  - cost of transport (km, mode)
+*   mode is airplane >> 200 dollars per km
+*   mode is bus >> 20 dollars per km
+*   return the cost
+Function2 - cost of hotel (nights) 
+*   calculates total cost of hotel at 50 dollars per night
+Function3 - cost of meals(days/nights, type)
+*   type is cafe: cost is 15 dollars  times 3 per day
+*   type is fine dining: cost is 25dollars times 3 per day
+*   return cost
+*main*
+**1 user will input 4 values**
+**call your 3 functions.**
+**calculate the total cost of your trip**
+"""
+#ANUSHA 
+def Cost_of_tansport(km,mode):
+  if mode == 'airplane':
+     cost_transport = km * 200
+     return cost_transport
+  elif mode == 'bus':
+    cost_transport = km * 20
+    return cost_transport
+  else:
+    return 0
+def Cost_of_hotel(nights):
+  cost_hotel=50 * nights
+  return cost_hotel
+def Cost_of_meals(nights,type_cafe):
+  if type_cafe == 'cafe':
+    cost_meals = 15 * 3 * nights
+    return cost_meals
+  elif type_cafe == 'fine dining':
+    cost_meals =25 * 3 * nights
+    return cost_meals
+  else:
+    return 0
+#main 
+transport_km=int(input("enter Km: "))
+transport_mode=input("enter Bus/Airplane").lower()
+nights=int(input("enter total nights you want to stay!! : "))
+meal_type=input("Enter type of meal cafe/finedinning:").lower()
+transport_cost=Cost_of_tansport(transport_km,transport_mode)
+total_nights=Cost_of_hotel(nights)
+total_cost_meals=Cost_of_meals(nights,meal_type)
+#overCost
+total_cost=transport_cost+total_nights+total_cost_meals
+print("Total cost your trip: ","$"+str(total_cost))
+
+"""
+enter Km: 600
+enter Bus/Airplaneairplane
+enter total nights you want to stay!! : 5
+Enter type of meal cafe/finedinning:cafe
+Total cost your trip:  $120475
+
+"""
