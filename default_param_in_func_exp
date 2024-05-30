@@ -1,0 +1,24 @@
+""" create a function (e.g. myFunc) that calculates the length of your first name (fname) and last name (lname)
+and return those 2 numbers.
+In the main, print those numbers using the function call as:
+myFunc("Brittany", "Spears")
+myFunc("Barbie")
+Sample output:
+First name: 8 and Last name: 6
+First name: 6 and Last name: 0
+"""
+
+#anusha 
+def My_func(fname,lname=""):
+  fcount=0
+  lcount=0
+  for i in range(len(fname)):
+    fcount+=1
+  for i in range(len(lname)):
+    lcount+=1
+  return f"first_name:{fcount} lastname:{lcount} "
+#main 
+count_First=My_func("Anusha","Mulukutla")
+print(count_First)
+count_second=My_func("aarna")
+print(count_second)
