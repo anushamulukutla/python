@@ -1,0 +1,61 @@
+"""
+Create a function that calculates the BMI of a person and returns if the BMI shows normal,
+overweight, underweight or obesity.
+In the main code, ask the user for input.
+BMI Categories:
+Underweight  <18.5
+Normal weight  18.5–24.9
+Overweight  25–29.9
+Obesity  BMI of 30 or greater
+BMI calculation: weight in kilograms divided by height in meters squared
+Challenge: Append the BMI or BMI category to a list in the main program. Keep appending the BMI of many
+people to that list until the user says no.
+"""
+#challenge part
+#Anusha
+def CAL_BMI(weight, height):
+    # Calculate BMI
+    BMI = weight / (height ** 2)
+    # Determine the weight category
+    if BMI < 18.5:
+        return "Underweight"
+    elif 18.5 <= BMI <= 24.9:
+        return "Normal Weight!!"
+    elif 25 <= BMI <= 29.9:
+        return "Overweight!!"
+    elif BMI >= 30:
+        return "Obesity!!!"
+
+# Main section
+user_category = []
+
+while True:
+    user_name = input("Enter Your name ")
+    user_weight = float(input("Enter Your weight in kg: "))
+    user_height = float(input("Enter your Height in meters: "))
+    result = CAL_BMI(user_weight, user_height)
+    user_category.append(result)
+    print("BMI Category: ",result)
+    user_choice = input("Do you want to calculate another person BMI? (Type YES/NO): ").upper()
+    if user_choice == 'NO':
+        break
+# Lists_resultofcategory
+print("user_category_list",user_category)
+
+#output:
+Enter Your name Anusha
+Enter Your weight in kg: 54
+Enter your Height in meters: 1.9
+BMI Category:  Underweight
+Do you want to calculate another person  BMI? (Type YES/NO): yes
+Enter Your name aarna
+Enter Your weight in kg: 11
+Enter your Height in meters: 0.9
+BMI Category:  Underweight
+Do you want to calculate another person  BMI? (Type YES/NO): yes
+Enter Your name elle
+Enter Your weight in kg: 58
+Enter your Height in meters: 2.69
+BMI Category:  Underweight
+Do you want to calculate another person  BMI? (Type YES/NO): no
+user_category_list ['Underweight', 'Underweight', 'Underweight']
