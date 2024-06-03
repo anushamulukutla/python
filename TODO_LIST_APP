@@ -1,106 +1,87 @@
 #OMSAIRAM
-"""
-Create a command-line to-do list application where users can add, remove, or mark tasks as complete. This project will help you understand how to work with lists and user inputs.
-"""
-#create a empty dict to store as task name or number and value as completed or. empty
-task_dict={ }
-#goal of this function is to add a task to TO_DO_LIST_APP
-def Add_task(task_add):
-    task_dict[task_add] = []
-    print(task_dict)
-##goal of this function is to remove a task from TO_DO_LIST_APP
-def remove_task(task_remove):
-  if task_remove in task_dict:
-    task_dict.remove(task_remove)
-  else:
-    print("Task u have entered is not in the To_DO_LIST_APPLICATION !!!! Pleae entere a valid choice to remove ")
-#goal of this function is to mark a task as completed in TO_DO_LIST_APP
-def Mark_Complete_task():
-  mark_complete=input("Enter the task you want to change the status!!")
-  status=input("set the progress to  type complete")
-  if status == 'complete':
-    if mark_complete in task_dict:
-     task_dict[mark_complete] = status
-  else:
-    task_dict[mark_complete] = 'Still Pending'
+# Initialize an empty dictionary to store tasks with their completion status
+task_dict = {}
 
-#goal of this function is to view all  task present in  TO_DO_LIST_APP
-def view_task():
-  view_task=input("Enter task you want see ??")
-  if view_task in task_dict.keys():
-    print(view_task,":",task_dict[view_task])
-  else:
-    print("I cannot find the task in TO_DO_LIST !! SORRY!!!")
-def display():
-  for k,v in task_dict.items():
-    print(k,":",v)
-#main program
-print("\t\t***TO_DO_LIST_APPLICATION_CREATED_BY_ANUSHA***")
-print("MENU OPTIONS\t\t\n\t1.ADD TASK\n\t2.REMOVE TASK\n\t3.VIEW TASK\n\t4.MARK TASK COMPLETE\n\t5.EXIT")
-while True:
-  print("Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))\n eg: 1 or ADD TASK : ",end="")
-  User_choice=input().upper()
-  if User_choice in['ADD TASK',"1"]:
-    task_add=input("Enter the task to be added to the TO_DO_LIST_APPLICATION:")
-    Add_task(task_add)
-    display()
-  elif User_choice in ['REMOVE TASK','2']:
-    task_remove=input("Enter the task to be remove from the list :")
-    remove_task(task_remove)
-    display()
-  elif User_choice in ["VIEW TASk",'3']:
-    view_task()
-  elif User_choice in ["Mark TASK COMPLETE",'4']:
-    Mark_Complete_task()
-  elif User_choice in ["EXIT",'5']:
-   break
-  else:
-    print("PLEASE ENTER A VALID CHOICE!!!!")
+# Function to add a task
+def add_task(task_name):
+    # Assign 'Pending' as the default status of the task
+    task_dict[task_name] = 'Pending'
+    print("Task added successfully.")
 
-#Sample OutPut;
-		***TO_DO_LIST_APPLICATION_CREATED_BY_ANUSHA***
-MENU OPTIONS		
-	1.ADD TASK
-	2.REMOVE TASK
-	3.VIEW TASK
-	4.MARK TASK COMPLETE
-	5.EXIT
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 1
-Enter the task to be added to the TO_DO_LIST_APPLICATION:buy soap
-{'buy soap': []}
-buy soap : []
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 1
-Enter the task to be added to the TO_DO_LIST_APPLICATION:submit essay
-{'buy soap': [], 'submit essay': []}
-buy soap : []
-submit essay : []
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 1
-Enter the task to be added to the TO_DO_LIST_APPLICATION:submit python assignment
-{'buy soap': [], 'submit essay': [], 'submit python assignment': []}
-buy soap : []
-submit essay : []
-submit python assignment : []
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 3
-Enter task you want see ??submitessay
-I cannot find the task in TO_DO_LIST !! SORRY!!!
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 3
-Enter task you want see ??submit essay
-submit essay : []
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 4
-Enter the task you want to change the status!!submit essay
-set the progress to  type completecomplete
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 3
-Enter task you want see ??submit essay
-submit essay : complete
-Please select the options from MENU OPTIONS(select either(TASK NUMER OR NAME IN THE MENU ))
- eg: 1 or ADD TASK : 5
+# Function to remove a task
+def remove_task(task_name):
+    if task_name in task_dict:
+        del task_dict[task_name]
+        print("Task removed successfully.")
+    else:
+        print("Task not found! Please enter a valid task name.")
+
+# Function to mark a task as complete
+def mark_complete(task_name):
+    if task_name in task_dict:
+        task_dict[task_name] = 'Complete'
+        print("Task marked as complete.")
+    else:
+        print("Task not found! Please enter a valid task name.")
+
+# Function to view all tasks
+def view_tasks():
+    if task_dict:
+        for task, status in task_dict.items():
+            print(task,":",status)
+    else:
+        print("No tasks found!")
+# Main function to drive the program
+def main():
+    print("\t*** TO-DO LIST APPLICATION BY ANUSHA***")
+    print("Options: 1. Add Task  2. Remove Task  3. View Tasks  4. Mark Task Complete  5. Exit")
+    
+    while True:
+        user_choice = input("Please select an option by number (e.g., 1/ADDTASK): ")
+        
+        if user_choice in ['1', 'ADDTASK']:
+            task_name = input("Enter the task to be added: ")
+            add_task(task_name)
+        elif user_choice in ['2', 'REMOVETASK']:
+            task_name = input("Enter the task to be removed: ")
+            remove_task(task_name)
+        elif user_choice in ['3', 'VIEWTASK']:
+            view_tasks()
+        elif user_choice in ['4', 'MARKCOMPLETETASK']:
+            task_name = input("Enter the task to mark as complete: ")
+            mark_complete(task_name)
+        elif user_choice in ['5', 'Exit']:
+            print("Exiting application.")
+            break
+        else:
+            print("Invalid input! Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    main()
 
 
-
+#Sample OutPut:
+	*** TO-DO LIST APPLICATION BY ANUSHA***
+Options: 1. Add Task  2. Remove Task  3. View Tasks  4. Mark Task Complete  5. Exit
+Please select an option by number (e.g., 1/ADDTASK): 1
+Enter the task to be added: buy laptop
+Task added successfully.
+Please select an option by number (e.g., 1/ADDTASK): 1
+Enter the task to be added: submit python assignment
+Task added successfully.
+Please select an option by number (e.g., 1/ADDTASK): 1
+Enter the task to be added: submit foundations class essay
+Task added successfully.
+Please select an option by number (e.g., 1/ADDTASK): 3
+buy laptop : Pending
+submit python assignment : Pending
+submit foundations class essay : Pending
+Please select an option by number (e.g., 1/ADDTASK): 4
+Enter the task to mark as complete: submit python assignment
+Task marked as complete.
+Please select an option by number (e.g., 1/ADDTASK): 3
+buy laptop : Pending
+submit python assignment : Complete
+submit foundations class essay : Pending
+Please select an option by number (e.g., 1/ADDTASK): 5
+Exiting application.
