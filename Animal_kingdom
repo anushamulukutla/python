@@ -1,0 +1,50 @@
+"""
+Create a dictionary of the animal kingdom. The keys are mammals, fish, amphibians, reptiles and
+birds.
+For each key, have a list of some species within the classification, or even another dictionary to
+further classify.
+Example: 'mammals':['cow','horse','dolphin']
+Create some functions to manipulate your dictionary.
+Sample functions:
+-find mammal type
+-output all carnivore mammals
+"""
+#dict Animal kingdom
+animal_kingdom = {
+    'mammals': {
+        'carnivores': ['lion', 'tiger', 'wolf'],
+        'herbivores': ['cow', 'horse', 'deer'],
+        'omnivores': ['human', 'bear', 'pig']
+    },
+    'fish': ['shark', 'tuna', 'trout'],
+    'amphibians': ['frog', 'salamander'],
+    'reptiles': ['python', 'cobra', 'gecko'],
+    'birds': ['eagle', 'ostrich', 'penguin']
+}
+
+def find_animal_type(animal):
+    for key, value in animal_kingdom.items():
+        if animal in value:
+            return key
+        elif type(value) == dict:
+            for key1, value1 in value.items():
+                if animal in value1:
+                    return key + " - " + key1
+    return "Animal not found"
+
+def output_carnivore_mammals():
+    carnivore_mammals = animal_kingdom['mammals']['carnivores']
+    print("Carnivore mammals:", ', '.join(carnivore_mammals))
+print(find_animal_type('lion'))
+print(find_animal_type('python'))
+print(find_animal_type('shark'))
+output_carnivore_mammals()
+
+#output
+"""
+mammals - carnivores
+reptiles
+fish
+Carnivore mammals: lion, tiger, wolf
+
+"""
