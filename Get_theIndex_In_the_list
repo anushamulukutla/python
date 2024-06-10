@@ -1,0 +1,20 @@
+#ANUSHA
+#TASK1
+def search_name(name_list, name):
+    if name in name_list:
+        index = name_list.index(name) + 1
+        return f"{name} is number {index} on the list."
+    else:
+        return "Name not in list"
+
+# Test the function
+names = ["Harry Potter", "Hermione Granger", "Ron Weasley", "Albus Dumbledore", "Severus Snape", "Voldemort", "Sirius Black"]
+print(search_name(names, "Ron Weasley"))
+print(search_name(names, "MATTEW"))
+
+#output
+"""
+Ron Weasley is number 3 on the list.
+Name not in the list
+
+"""
