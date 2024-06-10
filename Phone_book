@@ -1,0 +1,167 @@
+#Anusha
+#Task6
+"""
+Samia wants to store and manipulate all her contacts in a program. Help Samia create a full
+functioning program.
+You may store the contacts in the form of lists or dictionaries and allow Samia to create her phone
+book.
+Sample Functions/Methods that you can use:
+add_new_contact()
+delete_contact()
+show_phone_number()
+"""
+class PhoneBook:
+    def __init__(self):
+      #creating a empty dict
+        self.contacts = {}
+    # addnewcontact method to add name and phoneNo to dict
+    def add_new_contact(self, name, phone_number):
+        if name in self.contacts:
+            print(f"{name} is already in the phone book.")
+        else:
+            self.contacts[name] = phone_number
+            print(f"Contact {name} added.")
+#delete contact method used to del the user mentioned dict
+    def delete_contact(self, name):
+        if name in self.contacts:
+            del self.contacts[name]
+            print(f"Contact {name} deleted.")
+        else:
+            print(f"Contact {name} not found.")
+#method to show specific contact number
+    def show_phone_number(self, name):
+        if name in self.contacts:
+            print(f"The phone number for {name} is {self.contacts[name]}.")
+        else:
+            print(f"Contact {name} not found.")
+#method to show all contacts
+    def show_all_contacts(self):
+        if not self.contacts:
+            print("The phone book is empty.")
+        else:
+            for name, phone_number in self.contacts.items():
+                print(f"Name: {name}, Phone Number: {phone_number}")
+#create a object
+phone_book = PhoneBook()
+
+while True:
+      print("\t\t\tSamia PhoneBook\n\t1.ADD Phonenumber\n\t2.delete_phonenumber\n\t3.show_phonenumber\n\t4.show_all_contacts\n\t5.Exit")
+      choice = input("Enter your choice (1-5): ")
+      if choice == '1':
+        name = input("Enter the name: ").title()
+        while True:
+            phone_number = input("Enter the phone number: ")
+            if len(phone_number) == 10 and phone_number.isdigit():
+                phone_book.add_new_contact(name, phone_number)
+                break
+            else:
+                print("Please enter a valid 10-digit phone number.")
+      elif choice == '2':
+          name = input("Enter the name: ").title()
+          phone_book.delete_contact(name)
+      elif choice == '3':
+          name = input("Enter the name: ").title()
+          phone_book.show_phone_number(name)
+      elif choice == '4':
+          phone_book.show_all_contacts()
+      elif choice == '5':
+          print("Exiting the phone book. Goodbye!")
+          break
+      else:
+
+        print("Invalid choice. Please enter a number between 1 and 5.")
+
+#Output:
+"""
+	Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 1
+Enter the name: John
+Enter the phone number: 7896541236
+Contact John added.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 1
+Enter the name: Jessy
+Enter the phone number: 789654123
+Please enter a valid 10-digit phone number.
+Enter the phone number: 1236458973
+Contact Jessy added.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 1
+Enter the name: Ellen
+Enter the phone number: 3214569875
+Contact Ellen added.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 1
+Enter the name: Amanda
+Enter the phone number: 6547893216
+Contact Amanda added.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 4
+Name: John, Phone Number: 7896541236
+Name: Jessy, Phone Number: 1236458973
+Name: Ellen, Phone Number: 3214569875
+Name: Amanda, Phone Number: 6547893216
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 3
+Enter the name: Amanda
+The phone number for Amanda is 6547893216.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 2
+Enter the name: Amanda
+Contact Amanda deleted.
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 4
+Name: John, Phone Number: 7896541236
+Name: Jessy, Phone Number: 1236458973
+Name: Ellen, Phone Number: 3214569875
+			Samia PhoneBook
+	1.ADD Phonenumber
+	2.delete_phonenumber
+	3.show_phonenumber
+	4.show_all_contacts
+	5.Exit
+Enter your choice (1-5): 5
+Exiting the phone book. Goodbye!
+
+
+"""
