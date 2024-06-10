@@ -1,0 +1,70 @@
+"""
+A hospital has doctors, nurses, administrative staff and patients. Create classes that include some
+methods of your choice for a hospital.
+"""
+
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+    def get_details(self):
+        return f"Name: {self.name}, Age: {self.age}, Gender: {self.gender}"
+class Doctor(Person):
+    def __init__(self, name, age, gender, specialty):
+        super().__init__(name, age, gender)
+        self.specialty = specialty
+    def prescribe_medication(self, patient, medication):
+        return f"Dr. {self.name} prescribes {medication} to {patient.name}."
+class Nurse(Person):
+    def __init__(self, name, age, gender, department):
+        super().__init__(name, age, gender)
+        self.department = department
+
+    def administer_medication(self, patient, medication):
+        return f"Nurse {self.name} administers {medication} to {patient.name}."
+class AdministrativeStaff(Person):
+    def __init__(self, name, age, gender, position):
+        super().__init__(name, age, gender)
+        self.position = position
+
+    def schedule_appointment(self, patient, doctor, date):
+        return f"{self.name} schedules an appointment for {patient.name} with Dr. {doctor.name} on {date}."
+
+
+class Patient(Person):
+    def __init__(self, name, age, gender, condition):
+        super().__init__(name, age, gender)
+        self.condition = condition
+
+    def get_condition(self):
+        return f"{self.name}'s condition: {self.condition}"
+
+doctor1 = Doctor("John ", 40, "Male", "General")
+nurse1 = Nurse("Ellen", 35, "Female", "general")
+admin_staff1 = AdministrativeStaff("UXA", 30, "Female", "Receptionist")
+patient1 = Patient("Anusha", 27, "Female", "Fever")
+
+print(doctor1.get_details())
+print(nurse1.get_details())
+print(admin_staff1.get_details())
+print(patient1.get_details())
+
+print(doctor1.prescribe_medication(patient1, "Tyleneol"))
+print(nurse1.administer_medication(patient1, "Advil"))
+print(admin_staff1.schedule_appointment(patient1, doctor1, "7Th July"))
+print(patient1.get_condition())
+
+
+#output
+"""
+Name: John , Age: 40, Gender: Male
+Name: Ellen, Age: 35, Gender: Female
+Name: UXA, Age: 30, Gender: Female
+Name: Anusha, Age: 27, Gender: Female
+Dr. John  prescribes Tyleneol to Anusha.
+Nurse Ellen administers Advil to Anusha.
+UXA schedules an appointment for Anusha with Dr. John  on 7Th July.
+Anusha's condition: Fever
+
+"""
