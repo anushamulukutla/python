@@ -1,0 +1,34 @@
+#anusha
+import random
+with open("rn.txt",'w') as userfile2:
+  for i in range(0,100):
+    userfile2.write(str(random.randint(1,100))+"\n")
+with open("rn.txt", 'r') as userfile2:
+  search=[66,18,90,299,88,34]
+  compare_list=[]
+  for line in userfile2:
+    number = int(line.strip())
+    if number in search:
+      compare_list.append(str(number))
+print("List of numbers",compare_list)
+print("removing duplicates",set(compare_list))
+even_num=[]
+for num in set(compare_list):
+  if int(num) % 2 == 0:
+    even_num.append(num)
+print(even_num)
+print("EVEN NUMERS FROM THE LIST ")
+
+for even in even_num:
+ print(even)
+#output:
+"""
+List of numbers ['66', '34', '18', '66', '18', '34', '18', '90']
+removing duplicates {'34', '66', '18', '90'}
+['34', '66', '18', '90']
+EVEN NUMERS FROM THE LIST 
+34
+66
+18
+90
+"""
