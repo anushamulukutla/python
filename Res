@@ -1,0 +1,285 @@
+class Drink:
+    def __init__(self, drinktype, drinksize):
+        self.drinktype = drinktype
+        self.drinksize = drinksize
+
+    def info(self):
+        return f"DrinkType: ${self.drinktype}, Size: {self.drinksize}"
+
+    def display_menu(self):
+        print("Enter Your drink type 1 for Cold and 2 for Hot:", end=" ")
+        return input()
+
+class Colddrink(Drink):
+    def __init__(self, drinktype, drinksize, toppings, servingtype):
+        super().__init__(drinktype, drinksize)
+        self.toppings = toppings
+        self.servingtype = servingtype
+
+    def menu_colddrinks(self):
+        colddrinks = ["Milkshake", "Juice", "Smoothie"]
+        menu_milkshake = {"Classic Vanilla": 10, "American Mud Pie": 20, "Chocolate Milkshake": 15}
+        menu_juice = {"Grape": 5, "Mango": 10, "Strawberry": 15}
+        menu_smoothie = {"Tropical Chia Smoothie": 8.50, "Blueberry Smoothie": 11.70, "Green Pineapple Coconut Smoothie": 18.20}
+        i = 1
+        for drink in colddrinks:
+            print(i, ".", drink)
+            i += 1
+        user_colddrink_selection = input("Please enter the number you want: ")
+
+        if user_colddrink_selection == "1":
+            print("Selected item is milkshake. Now please select the menu of milkshake")
+            j = 1
+            for drink, price in menu_milkshake.items():
+                print(j, ".", drink, ":", price)
+                j += 1
+            user_milkshake_selection = input()
+            if user_milkshake_selection == "1":
+                order = menu_milkshake["Classic Vanilla"]
+                selected_item = "Classic Vanilla"
+            elif user_milkshake_selection == "2":
+                order = menu_milkshake["American Mud Pie"]
+                selected_item = "American Mud Pie"
+            elif user_milkshake_selection == "3":
+                order = menu_milkshake["Chocolate Milkshake"]
+                selected_item = "Chocolate Milkshake"
+            else:
+                print("Invalid selection!")
+                return None, None
+        elif user_colddrink_selection == "2":
+            print("Selected item is juice. Now please select the menu of juice")
+            j = 1
+            for drink, price in menu_juice.items():
+                print(j, ".", drink, ":", price)
+                j += 1
+            user_juice_selection = input()
+            if user_juice_selection == "1":
+                order = menu_juice["Grape"]
+                selected_item = "Grape"
+            elif user_juice_selection == "2":
+                order = menu_juice["Mango"]
+                selected_item = "Mango"
+            elif user_juice_selection == "3":
+                order = menu_juice["Strawberry"]
+                selected_item = "Strawberry"
+            else:
+                print("Invalid selection!")
+                return None, None
+        elif user_colddrink_selection == "3":
+            print("Selected item is smoothie. Now please select the menu of smoothie")
+            j = 1
+            for drink, price in menu_smoothie.items():
+                print(j, ".", drink, ":", price)
+                j += 1
+            user_smoothie_selection = input()
+            if user_smoothie_selection == "1":
+                order = menu_smoothie["Tropical Chia Smoothie"]
+                selected_item = "Tropical Chia Smoothie"
+            elif user_smoothie_selection == "2":
+                order = menu_smoothie["Blueberry Smoothie"]
+                selected_item = "Blueberry Smoothie"
+            elif user_smoothie_selection == "3":
+                order = menu_smoothie["Green Pineapple Coconut Smoothie"]
+                selected_item = "Green Pineapple Coconut Smoothie"
+            else:
+                print("Invalid selection!")
+                return None, None
+        else:
+            print("Please enter a valid menu number!")
+            return None, None
+
+        return selected_item, order
+
+    def ordertype(self):
+        print("Enter type of order: 1. takeaway 2. dinein")
+        self.ordertype = input()
+
+class Hotdrinks(Drink):
+    def __init__(self, drinktype, drinksize, sweetness_level):
+        super().__init__(drinktype, drinksize)
+        self.sweetness_level = sweetness_level
+
+    def menu_hotdrink(self):
+        menu_hot_drink = ["Tea", "Coffee"]
+        menu_tea = {"Tea": 4, "Green Tea": 5, "Lemon Tea": 6}
+        menu_coffee = {"Cappuccino": 7, "Espresso": 3, "Lattes": 5.30}
+        i = 1
+        order_hot = 0
+        for hotdrink in menu_hot_drink:
+            print(i, ".", hotdrink)
+            i += 1
+        user_hot_drink_choice = input("Enter your hot drink choice: ")
+
+        if user_hot_drink_choice == "1":
+            print("You have selected Tea!")
+            j = 1
+            for tea, price in menu_tea.items():
+                print(j, ".", tea, ":", price)
+                j += 1
+            user_tea_selection = input()
+            if user_tea_selection == "1":
+                order_hot = menu_tea["Tea"]
+                selected_item = "Tea"
+            elif user_tea_selection == "2":
+                order_hot = menu_tea["Green Tea"]
+                selected_item = "Green Tea"
+            elif user_tea_selection == "3":
+                order_hot = menu_tea["Lemon Tea"]
+                selected_item = "Lemon Tea"
+            else:
+                print("Invalid selection!")
+                return None, None
+        elif user_hot_drink_choice == "2":
+            print("You have selected Coffee!")
+            j = 1
+            for coffee, price in menu_coffee.items():
+                print(j, ".", coffee, ":", price)
+                j += 1
+            user_coffee_selection = input()
+            if user_coffee_selection == "1":
+                order_hot = menu_coffee["Cappuccino"]
+                selected_item = "Cappuccino"
+            elif user_coffee_selection == "2":
+                order_hot = menu_coffee["Espresso"]
+                selected_item = "Espresso"
+            elif user_coffee_selection == "3":
+                order_hot = menu_coffee["Lattes"]
+                selected_item = "Lattes"
+            else:
+                print("Invalid selection!")
+                return None, None
+        else:
+            print("Invalid choice!")
+            return None, None
+
+        return selected_item, order_hot
+
+class Food:
+    def __init__(self, dishtype, spicy_level):
+        self.dishtype = dishtype
+        self.spicy_level = spicy_level
+
+    def display_menu(self):
+        print("MENU OF FOOD ")
+        menu_food = ["Maincourse", "Starter"]
+        i = 1
+        for food in menu_food:
+            print(f"{i}. {food}")
+            i += 1
+
+class Starter(Food):
+    def __init__(self, dishtype, spicy_level, garnish):
+        super().__init__(dishtype, spicy_level)
+        self.garnish = garnish
+
+    def menu_starters(self):
+        menu_starter = {
+            "Spring Rolls": 5,
+            "Paneer 65": 13,
+            "Chicken Wings": 17
+        }
+
+        i = 1
+        for food, price in menu_starter.items():
+            print(i, ".", food, "-", price)
+            i += 1
+        user_starter_selection = input("Please Select Item From Starters Menu ")
+
+        if user_starter_selection == "1":
+            order_starter = menu_starter["Spring Rolls"]
+            selected_item = "Spring Rolls"
+        elif user_starter_selection == "2":
+            order_starter = menu_starter["Paneer 65"]
+            selected_item = "Paneer 65"
+        elif user_starter_selection == "3":
+            order_starter = menu_starter["Chicken Wings"]
+            selected_item = "Chicken Wings"
+        else:
+            print("INVALID CHOICE")
+            return None, None
+
+        return selected_item, order_starter
+
+class Maincourse(Food):
+    def __init__(self, dishtype, spicy_level, garnish):
+        super().__init__(dishtype, spicy_level)
+        self.garnish = garnish
+
+    def menu_maincourse(self):
+        menu_maincourse = {
+            "Pasta": 12,
+            "Noodles": 20,
+            "Salmon": 18
+        }
+
+        i = 1
+        for food, price in menu_maincourse.items():
+            print(i, ".", food, "-", price)
+            i += 1
+        user_maincourse_selection = input("Please Select Item From MainCourse Menu ")
+        if user_maincourse_selection == "1":
+            order_maincourse = menu_maincourse["Pasta"]
+            selected_item = 'Pasta'
+        elif user_maincourse_selection == "2":
+            order_maincourse = menu_maincourse["Noodles"]
+            selected_item= "Noddles"
+        elif user_maincourse_selection == "3":
+            order_maincourse = menu_maincourse["Salmon"]
+            selected_item="Salmon"
+        else:
+          print("INVALID CHOICE")
+        return selected_item,order_maincourse
+
+    def cuisine_type(self):
+        print("Enter cuisine type: 1. Italian 2. American 3. Seafood")
+        self.cuisine_type = input()
+
+#main
+print("-----"*40)
+print("\t\t\t***WELCOME TO THE BREAK FAST STORY ***")
+print("-----"*40)
+obj_drink = Drink("hot/cold", "m")
+drink_choice = obj_drink.display_menu()
+if drink_choice == "1":
+    cold_obj = Colddrink("cold", "large", "none", "takeaway")
+    order_cold = cold_obj.menu_colddrinks()
+    if order_cold:
+        print(order_cold)
+elif drink_choice == "2":
+    hot_obj = Hotdrinks("hot", "medium", "medium")
+    order_hot = hot_obj.menu_hotdrink()
+    if order_hot:
+        print(order_hot)
+else:
+    print("Invalid selection!")
+obj_food=Food("starter/Maincourse","Medium spicey level")
+for i in range(2):
+  menu=obj_food.display_menu()
+  select_food=input("Please Select Your Choice from 1(MainCourse) or 2(Starter) : ")
+  if select_food == "2":
+    starter_obj=Starter('starter','Medium_level','oninon and coriander')
+    order_star=starter_obj.menu_starters()
+    print(order_star)
+  elif select_food == "1":
+    maincourse_obj=Maincourse('Maincourse','Medium_level','oninon and Lemon')
+    order_main=maincourse_obj.menu_maincourse()
+    print(order_main)
+#order summery/ bill
+print()
+print()
+print()
+print("\t\t\t***WELCOME TO THE BREAK FAST STORY ***")
+print("\t\t\t\t\t ORDERSUMMARY")
+print("BILLNO :BFS29:")
+if drink_choice == "1":
+   sub_total=order_cold[1]+order_star[1]+order_main[1]
+   tax=sub_total * (10/100)
+   print("\n",order_cold[0],"-----------",order_cold[1],"\n",order_star[0],"-----------------",order_star[1],"\n",order_main[0],'-----------------',order_main[1],"\nTAX","----------------",tax)
+   Total = sub_total + tax
+   print("TOTAL BILL !!!",Total)
+else:
+     sub_total=order_hot[1]+order_star[1]+order_main[1]
+     tax=sub_total * (10/100)
+     print("\n",order_hot[0],"-----------",order_hot[1],"\n",order_star[0],"-----------------",order_star[1],"\n",order_main[0],'-----------------',order_main[1],"\nTAX ","----------------",tax)
+     Total = sub_total + tax
+     print(" TOTAL BILL !!!",Total)
