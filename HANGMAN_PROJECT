@@ -1,0 +1,91 @@
+Anusha
+import random
+# created a file with 20 random words
+def file_random_word():
+    list_words = fruits = ["apple", "banana", "orange","strawberry", "blueberry","mango", "pineapple","grape","watermelon", "peach","cherry","pear",
+                           "kiwi","papaya","lemon","lime","plum","raspberry","blackberry","cantaloupe"]
+    print("Original List",list_words)
+    random.shuffle(list_words)
+    print("RANDOM WORDS AFTER SHUFFLE:",list_words)
+    with open("hangman.txt", 'w') as fileword:
+        for word in list_words:
+            fileword.write(word + '\n')
+# created to select a randomword from file
+def word_selection():
+    file_random_word()
+    global random_list_word
+    with open("hangman.txt", "r") as fileword:
+        random_list_word = fileword.read().splitlines()
+        print("RandomList",random_list_word)
+    global random_num
+    random_num = random.randint(0, 20)
+# user_input and loop till the length of guessWord chances
+def Game_begins():
+    word_selection()
+    random_game_word = random_list_word[random_num]
+    print("--"*50)
+    print("\t\t\t***WELCOME To HANGMAN GAME***")
+    print("--"*50)
+    print("Please Guess The Correct Word : "+"_ " * len(random_game_word),"You have ",len(random_game_word),"Chances")
+    count = len(random_game_word)
+    score=0
+    for choice in range(count):
+        print("**HINT** WORD IS A FRUIT!!!")
+        user_selection = input("Enter a letter: ").lower()
+        if user_selection in random_game_word:
+            print("YOUR GUESS IS CORRECT!!!!")
+            count -= 1
+            score=score+1
+            print("YOU HAVE", count, "NO OF CHANCES TO GUESS CORRECT LETTERS!!!")
+        else:
+            print("OOPS, I AM SORRY WRONG GUESS")
+            count -= 1
+            print("YOU HAVE", count, "NO OF CHANCES TO GUESS INCORRECT LETTERS!!!")
+        print("-"*40)
+    print("\nCORRECT GUESS WORD IS", random_game_word,"Your Score is",score,"outof",len(random_game_word))
+Game_begins()
+
+
+"""
+Original List ['apple', 'banana', 'orange', 'strawberry', 'blueberry', 'mango', 'pineapple', 'grape', 'watermelon', 'peach', 'cherry', 'pear', 'kiwi', 'papaya', 'lemon', 'lime', 'plum', 'raspberry', 'blackberry', 'cantaloupe']
+RANDOM WORDS AFTER SHUFFLE: ['raspberry', 'plum', 'cherry', 'apple', 'peach', 'banana', 'pineapple', 'watermelon', 'kiwi', 'pear', 'mango', 'blueberry', 'blackberry', 'lime', 'papaya', 'strawberry', 'orange', 'grape', 'lemon', 'cantaloupe']
+RandomList ['raspberry', 'plum', 'cherry', 'apple', 'peach', 'banana', 'pineapple', 'watermelon', 'kiwi', 'pear', 'mango', 'blueberry', 'blackberry', 'lime', 'papaya', 'strawberry', 'orange', 'grape', 'lemon', 'cantaloupe']
+----------------------------------------------------------------------------------------------------
+			***WELCOME To HANGMAN GAME***
+----------------------------------------------------------------------------------------------------
+Please Guess The Correct Word : _ _ _ _ _ _  You have  6 Chances
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: g
+OOPS, I AM SORRY WRONG GUESS
+YOU HAVE 5 NO OF CHANCES TO GUESS INCORRECT LETTERS!!!
+----------------------------------------
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: a
+YOUR GUESS IS CORRECT!!!!
+YOU HAVE 4 NO OF CHANCES TO GUESS CORRECT LETTERS!!!
+----------------------------------------
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: p
+OOPS, I AM SORRY WRONG GUESS
+YOU HAVE 3 NO OF CHANCES TO GUESS INCORRECT LETTERS!!!
+----------------------------------------
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: k
+OOPS, I AM SORRY WRONG GUESS
+YOU HAVE 2 NO OF CHANCES TO GUESS INCORRECT LETTERS!!!
+----------------------------------------
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: h
+OOPS, I AM SORRY WRONG GUESS
+YOU HAVE 1 NO OF CHANCES TO GUESS INCORRECT LETTERS!!!
+----------------------------------------
+**HINT** WORD IS A FRUIT!!!
+Enter a letter: c
+OOPS, I AM SORRY WRONG GUESS
+YOU HAVE 0 NO OF CHANCES TO GUESS INCORRECT LETTERS!!!
+----------------------------------------
+
+CORRECT GUESS WORD IS banana Your Score is 1 outof 6
+
+
+"""
